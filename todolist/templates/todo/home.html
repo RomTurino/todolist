@@ -1,0 +1,18 @@
+{%extends 'todo/base.html'%}
+{%block title%}Насущные дела{%endblock title%}
+{%block content%}
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+<div class="row justify-content-center mt-5">
+        <div class="col-md-7 text-center">
+
+                 <h1>Добро пожаловать в список задач!</h1>
+            <p>Ты здесь, а это  <b><i>веский</i></b> повод для улыбки. Используй панель навигации, ибо пришла пора вершить дела!</p>
+        <a role="button" class="btn btn-primary btn-lg" href="{%if user.is_authenticated%}{% url 'current_todos'%}{%else%}{% url 'signupuser' %}{%endif%}">Start</a>
+        </div>
+    </div>
+{%endblock content%}

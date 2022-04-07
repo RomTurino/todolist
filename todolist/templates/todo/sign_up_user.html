@@ -1,0 +1,33 @@
+{%extends 'todo/base.html'%}
+{%block title%}Регистрация{%endblock title%}
+{%block content%}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            <h2>Зарегистрироваться</h2>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-5">
+            {% if error %}
+                <div class="alert alert-danger" role="alert">
+                    {{ error }}
+                </div>
+            {% endif %}
+    <form method="POST">
+    {%csrf_token%}
+    <div class="form-group">
+        <label for="username">Твое имя</label>
+        <input type="text" name="username" class="form-control" id="username" aria-describedby="usernameHelp">
+        <small id="usernameHelp" class="form-text text-muted">Твое имя должно быть единственным и неповторимым</small>
+    </div>
+    <div class="form-group">
+        <label for="password1">Твой пароль</label>
+        <input type="password" name="password1" class="form-control" id="password1">
+    </div>
+    <div class="form-group">
+        <label for="password2">Проверь, что не забыл пароль</label>
+        <input type="password" name="password2" class="form-control" id="password2">
+    </div>
+    <button type="submit" class="btn btn-primary">Зарегистрироваться</button>
+    </form>
+{%endblock content%}

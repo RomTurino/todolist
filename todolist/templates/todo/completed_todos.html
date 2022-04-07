@@ -1,0 +1,26 @@
+{%extends 'todo/base.html'%}
+{%block title%}Выполненные дела{%endblock title%}
+{%block content%}
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <h1>Выполненные задачи</h1>
+        </div>
+    </div>
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+            <div class="list-group">
+                {%for todo in todolist%}
+
+                    <a href = "{% url 'viewtodo' todo.id  %}" class="list-group-item list-group-item-action">
+                    {%if todo.important%}<b>{%endif%}
+                    {{todo.title}}
+                    {%if todo.important%}</b>{%endif%}
+                    {%if todo.description%} - {{todo.description}} {%endif%}
+                    <p>Дата выполнения: {{todo.date_completed|date:'l j E Y H:i'}}</p>
+                    </a>
+
+                {%endfor%}
+            </div>
+        </div>
+    </div>
+{%endblock content%}

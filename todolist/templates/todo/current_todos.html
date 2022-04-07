@@ -1,0 +1,30 @@
+{%extends 'todo/base.html'%}
+{%block title%}Насущные дела{%endblock title%}
+{%block content%}
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-25">
+            <h1>Список задач</h1>
+        </div>
+    </div>
+    <ul>
+
+    <div class="row justify-content-center mt-5">
+        <div class="col-md-10">
+        {% if todolist %}
+            <div class="list-group">
+            {%for todo in todolist%}
+                <a href="{% url 'viewtodo' todo.id %}" class="list-group-item list-group-item-action{% if todo.important %} list-group-item-danger{% endif %}"><b>{{ todo.title }}</b>{% if todo.description %} - {{ todo.description|truncatechars:30 }}{% endif %}</a>
+             {%endfor%}
+             </div>
+        {%else%}
+            <div class="text-center">
+                <h2>Дела сделаны. Иного не могло быть. Ты - сама неотвратимость!</h2>
+            <br>
+            <a role="button" class="btn btn-primary" href="{% url 'create_todos' %}">Новая задача</a>
+            </div>
+        {% endif %}
+        </div>
+    </div>
+
+{%endblock content%}
